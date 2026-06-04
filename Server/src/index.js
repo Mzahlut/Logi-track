@@ -1,5 +1,7 @@
 import express from "express";
 import "dotenv/config";
+import authRoutes from "./routes/auth.routes.js";
+import { verificarToken } from "./middlewares/auth.middleware.js";
 import usuariosRouter from "./routes/usuarios.routes.js";
 import pedidosRouter from "./routes/pedidos.routes.js";
 import repartidoresRouter from "./routes/repartidores.routes.js";
@@ -9,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 // Routes
+app.use("/auth", authRoutes);
 app.use("/usuarios", usuariosRouter);
 app.use("/pedidos", pedidosRouter);
 app.use("/repartidores", repartidoresRouter);
